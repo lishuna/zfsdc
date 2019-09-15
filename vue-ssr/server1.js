@@ -1,13 +1,14 @@
-require('@babel/register');
 const express = require('express');
 const Vue  = require('vue');
 const fs = require('fs');
 const path = require('path');
 const vueServerRenderer  = require('vue-server-renderer');
-const createApp = require('./src/server.entry');
 const app = express();
 
 
+const vm =new Vue({
+    template: '<h1>hello word!你好</h1>'
+});
 const context = {
     content: '我是服务器端插值'
 };
@@ -15,10 +16,7 @@ const html =  fs.readFileSync(path.join(__dirname,'index.html'),'utf8');
 const render = vueServerRenderer.createRenderer({
     template: html
 })
-app.get('*',(req,res,next)=>{
-    const vm = createApp({
-        url: req.path
-    });
+app.get('/',(req,res,next)=>{
     render.renderToString(vm,context,(err,template)=>{
         if(err){
             console.log(err);
