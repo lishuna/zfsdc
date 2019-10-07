@@ -13,3 +13,11 @@ class Modal{
   	console.log('show');
   }
 }
+
+class subModal extends Modal{
+  constructor(){
+    // super();
+  }
+}
+let modal = new subModal();
+console.log(modal);

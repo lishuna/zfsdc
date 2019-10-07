@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件穿透</title>
+    <style>
+        #app {
+            height: 100vh;
+        }
+        
+        .dialog {
+            width: 300px;
+            height: 300px;
+            background: #fff;
+            z-index: 100;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+        
+        .mask {
+            opacity: 0.6;
+            background: #000;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        .hide {
+            display: none;
+        }
+        
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button class="show-btn">展示弹窗</button>
+        <div class="dialog">
+            <p>弹窗内容</p>
+            <button class="close-btn">关闭</button>
+        </div>
+        <div class="mask"></div>
+    </div>
+
+    <script>
+        var closeBtn = document.querySelector('.close-btn');
+        var dialog = document.querySelector('.dialog');
+        var mask = document.querySelector('.mask');
+        closeBtn.addEventListener('touchend', () => {
+            dialog.className = 'dialog hide';
+            mask.className = 'mask hide'
+                // event.preventDefault();
+        });
+        const app = document.querySelector('#app');
+        app.addEventListener('click', () => {
+            alert('i am click event!');
+        });
+        const showBtn = document.querySelector('.show-btn');
+        showBtn.addEventListener('click', () => {
+            dialog.className = dialog.className.indexOf('hide') !== -1 ? 'dialog show' : 'dialog hide';
+            mask.className = mask.className.indexOf('hide') !== -1 ? 'mask show' : 'mask hide';
+        });
+    </script>
+</body>
+
+</html>

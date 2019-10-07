@@ -9,7 +9,7 @@
     "client:build": "webpack --config ./config/webpack.client.js",
     "client:dev": "webpack-dev-server --config ./config/webpack.client.js",
     "server:build": "webpack --config ./config/webpack.server.js",
-    "server": "nodemon server.js"
+    "server:dev": "nodemon ./src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -36,6 +36,7 @@
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^4.2.2",
+    "webpack-node-externals": "^1.7.2"
   }
 }

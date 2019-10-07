@@ -23,7 +23,6 @@ module.exports = webpackMerge(baseConfig, {
             title: 'Vue构建练习',
             filename: 'index.html',
             template: path.resolve(__dirname, '../index.html')
-        }),
-        new VueLoaderPlugin()
+        })
     ]
 });
